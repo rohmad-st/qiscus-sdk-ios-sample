@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import Qiscus
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, QiscusConfigDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let viewController = ViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        
+        Qiscus.setup(withAppId: "DRAGONFLY", userEmail: "e3@qiscus.com", userKey: "password", username: "Evan 3", avatarURL: "https://qiscuss3.s3.amazonaws.com/uploads/36976206a8b1fd2778938dbcd72b6624/qiscus-dp.png", delegate: self, secureURl: false)
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
@@ -39,6 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func qiscusFailToConnect(withMessage:String){
+        print("fail to connect")
+    }
+    
+    func qiscusConnected(){
+        print("success to connect")
     }
 
 
