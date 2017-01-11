@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         button.setTitle("Test Qiscus Chat 2", for: UIControlState())
         button.backgroundColor = UIColor.black
         self.view.addSubview(button)
+        self.view.backgroundColor = UIColor.white
         button.addTarget(self, action: #selector(ViewController.goToChat), for: .touchUpInside)
     }
 
