@@ -1,6 +1,0 @@
-framework module QAsyncImageView {
-  umbrella header "QAsyncImageView-umbrella.h"
-
-  export *
-  module * { export * }
-}
