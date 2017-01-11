@@ -10,23 +10,24 @@ import UIKit
 import Qiscus
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, QiscusConfigDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navController = UINavigationController()
-    var mainView = ViewController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let mainView = ViewController()
-        let navigationController = UINavigationController(rootViewController: mainView)
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.black
         
-        
-        mainView.showQiscusLoading()
-        Qiscus.setup(withAppId: "dragonfly", userEmail: "081212962117@qiscuswa.com", userKey: "26407cd298d88c131ff98d48201312c6", username: "Athaullah", avatarURL: "https://qiscuss3.s3.amazonaws.com/uploads/db5cbfe427dbeca6026d57c047074866/qiscus-dp.png", delegate: self)
-        
+        if !Qiscus.isLoggedIn{
+            goToLoginView()
+        }else{
+            goToChatNavigationView()
+        }
+
         //Chat view styling
         Qiscus.style.color.leftBaloonColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         Qiscus.style.color.welcomeIconColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
@@ -35,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, QiscusConfigDelegate {
         Qiscus.style.color.rightBaloonTextColor = UIColor.white
         Qiscus.setGradientChatNavigation(UIColor.black, bottomColor: UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1), tintColor: UIColor.white)
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         
@@ -65,14 +64,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, QiscusConfigDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    // MARK: - QiscusConfigDelegate
-    func qiscusFailToConnect(_ withMessage:String){
-        print(withMessage)
-        mainView.dismissQiscusLoading()
+    func goToChatNavigationView(){
+        let chatView = goToChatVC()
+        let navigationController = UINavigationController(rootViewController: chatView)
+        window?.rootViewController = navigationController
     }
-    func qiscusConnected(){
-        print("Chat server connected")
-        mainView.dismissQiscusLoading()
+    
+    func goToLoginView(){
+        let mainView = MainView()
+        let navigationController = UINavigationController(rootViewController: mainView)
+        window?.rootViewController = navigationController
     }
 }
 
