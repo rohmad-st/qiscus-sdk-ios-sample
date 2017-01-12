@@ -14,6 +14,7 @@ class MainView: UIViewController, QiscusConfigDelegate {
     @IBOutlet weak var appIdField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var userKeyField: UITextField!
+    @IBOutlet weak var userNameField: UITextField!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -41,7 +42,7 @@ class MainView: UIViewController, QiscusConfigDelegate {
     */
     @IBAction func login(_ sender: UIButton) {
         self.showQiscusLoading()
-        Qiscus.setup(withAppId: appIdField.text!, userEmail: emailField.text!, userKey: userKeyField.text!, delegate: self)
+        Qiscus.setup(withAppId: appIdField.text!, userEmail: emailField.text!, userKey: userKeyField.text!, username: userNameField.text!,delegate: self)
     }
     func hideKeyboard(){
         self.view.endEditing(true)
