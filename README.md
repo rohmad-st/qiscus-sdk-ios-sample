@@ -57,7 +57,8 @@ For example :
         return true
     }
 ```
-
+Note: Don't forget to add usage description for camera, photo library and microphone to your info.plist
+![alt tag](https://res.cloudinary.com/qiscus/raw/upload/v1485738688/1485738687/Screen%20Shot%202017-01-30%20at%208.10.46%20AM.png)
 
 ### Start Chat with Target
 
