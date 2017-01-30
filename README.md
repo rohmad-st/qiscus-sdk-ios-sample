@@ -105,10 +105,10 @@ For Example :
 
 ### Screen Shots
 
-![alt tag](https://qiscuss3.s3.amazonaws.com/example@mail.com/xxx/02d03cb991ae1edf28c0ae6e738ce3aa/Screen+Shot+2016-09-15+at+6.05.41+AM.png)
+![alt tag](https://res.cloudinary.com/qiscus/raw/upload/v1485736947/1485736946/Screen%20Shot%202017-01-30%20at%207.26.07%20AM.png)
 
-![alt tag](https://qiscuss3.s3.amazonaws.com/example@mail.com/xxx/dcacfdf4af52939c3dc903ff462203ca/Screen+Shot+2016-09-15+at+6.06.39+AM.png)
+![alt tag](https://res.cloudinary.com/qiscus/raw/upload/v1485736958/1485736957/Screen%20Shot%202017-01-30%20at%207.26.59%20AM.png)
 
-![alt tag](https://qiscuss3.s3.amazonaws.com/example@mail.com/xxx/58e6dad7cf346d5eae1c00cb4f5f6f7e/Screen+Shot+2016-09-15+at+6.07.16+AM.png)
+![alt tag](https://res.cloudinary.com/qiscus/raw/upload/v1485736969/1485736967/Screen%20Shot%202017-01-30%20at%207.41.09%20AM.png)
 
 
