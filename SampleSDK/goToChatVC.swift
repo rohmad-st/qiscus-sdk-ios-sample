@@ -21,16 +21,29 @@ class goToChatVC: UIViewController {
         let dismissRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToChatVC.hideKeyboard))
         self.view.addGestureRecognizer(dismissRecognizer)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func goToChat(_ sender: UIButton) {
-        Qiscus.chat(withUsers: [targetField.text!] , target: self, title: "SampleChat", optionalDataCompletion: { optionalData in
-            print("optionalData from Example view: \(optionalData)")
-        })
+        if targetField.text! != "" {
+            let emailData = targetField.text!.characters.split(separator: ",")
+            if emailData.count > 1 {
+                var emails = [String]()
+                for email in emailData{
+                    emails.append(String(email).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+                }
+                Qiscus.createChat(withUsers:emails, target:self, title:"New Group Chat", subtitle: "Always new chat")
+            }else if let roomId = Int(targetField.text!){
+                Qiscus.chat(withRoomId: roomId, target: self, subtitle: "Group Chat", optionalDataCompletion: { _ in
+                    
+                })
+            }else{
+                Qiscus.chat(withUsers: [targetField.text!] , target: self, title: "SampleChat")
+            }
+        }
     }
     
     @IBAction func logOut(_ sender: UIButton) {
